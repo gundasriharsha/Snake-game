@@ -70,11 +70,19 @@ public class Board extends JPanel implements ActionListener {
                 if(i==0){
                     //draw image of head
                     graphics.drawImage(head, x[0], y[0], this);
+
                 }
                 else{
                     //draw image of body
                     graphics.drawImage(body, x[i], y[i], this);
                 }
+                int score=(dots-3)*10;
+                String scoremsg="Score : "+Integer.toString(score);
+                Font font = new Font("helvetica", Font.BOLD, 18);
+                FontMetrics metrics = getFontMetrics(font);
+                graphics.setColor(Color.white);
+                graphics.setFont(font);
+                graphics.drawString(scoremsg, (width - metrics.stringWidth(scoremsg)) / 2, height / 4);
             }
         }
         else{
@@ -85,14 +93,13 @@ public class Board extends JPanel implements ActionListener {
     private void gameOver(Graphics graphics) {
         String msg = "Game Over!";
         int score=(dots-3)*10;
-        String scoremsg="Score : "+Integer.toString(score);
+        String scoremsg="Final Score : "+Integer.toString(score);
         Font font = new Font("helvetica", Font.BOLD, 24);
         FontMetrics metrics = getFontMetrics(font);
         graphics.setColor(Color.white);
         graphics.setFont(font);
         graphics.drawString(msg, (width - metrics.stringWidth(msg)) / 2, height / 4);
         graphics.drawString(scoremsg, (width - metrics.stringWidth(scoremsg)) / 2, 3*height / 4);
-
     }
 
     @Override
